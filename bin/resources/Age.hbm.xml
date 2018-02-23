@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD//EN"
+    "http://hibernate.org/dtd/hibernate-mapping.dtd">
+
+<hibernate-mapping>
+    <class name="fborges8262.Age" table="AGE">
+        <id name="ageID" type="int">
+            <column name="AGEID" />
+            <generator class="native" />
+        </id>
+        <property name="ageGroup" type="int">
+            <column name="AGEGROUP" />
+        </property>
+        <property name="censusYear" type="int">
+            <column name="CENSUSYEAR" />
+        </property>
+        <property name="geographicArea" type="int">
+            <column name="GEOGRAPHICAREA" />
+        </property>
+        <property name="combined" type="int">
+            <column name="COMBINED" />
+        </property>
+         <property name="male" type="int">
+            <column name="MALE" />
+        </property>
+         <property name="female" type="int">
+            <column name="FEMALE" />
+        </property>
+    </class>
+</hibernate-mapping>
