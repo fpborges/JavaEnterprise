@@ -9,15 +9,15 @@
             <column name="AGEID" />
             <generator class="native" />
         </id>
-        <property name="ageGroup" type="int">
+        <many-to-one name="ageGroup" not-null="true" class="fborges8262.AgeGroup">
             <column name="AGEGROUP" />
-        </property>
-        <property name="censusYear" type="int">
+        </many-to-one>
+        <many-to-one name="censusYear" not-null="true" class="fborges8262.CensusYear">
             <column name="CENSUSYEAR" />
-        </property>
-        <property name="geographicArea" type="int">
+        </many-to-one>
+        <many-to-one name="geographicArea" not-null="true" class="fborges8262.GeographicArea"> 
             <column name="GEOGRAPHICAREA" />
-        </property>
+        </many-to-one>
         <property name="combined" type="int">
             <column name="COMBINED" />
         </property>

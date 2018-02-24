@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+       "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.org/dtd/hibernate-mapping-2.0.dtd">
+   
+
+<hibernate-mapping>
+    <class name="fborges8262.CensusYear" table="CENSUSYEAR">
+        <id name="censusYearID" type="int">
+            <column name="CENSUSYEARID" />
+            <generator class="native" />
+        </id>
+        <property name="censusYear" type="int">
+            <column name="CENSUSYEAR" />
+        </property>
+         <set name="ages" inverse="true">
+            <key column="CensusYear"/>
+            <one-to-many class="fborges8262.Age"/>
+        </set>
+    </class>
+</hibernate-mapping>

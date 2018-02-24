@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.org/dtd/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping>
+    <class name="fborges8262.AgeGroup" table="AGEGROUP">
+        <id name="ageGroupID" type="int">
+            <column name="AGEGROUPID" />
+            <generator class="native" />
+        </id>
+        <property name="description" type="java.lang.String" not-null="true">
+            <column name="DESCRIPTION" />
+        </property>
+         <set name="ages" inverse="true">
+            <key column="AgeGroup"/>
+            <one-to-many class="fborges8262.Age"/>
+        </set>
+    </class>
+</hibernate-mapping>

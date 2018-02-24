@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+      "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.org/dtd/hibernate-mapping-2.0.dtd">
+  
+
+<hibernate-mapping>
+    <class name="fborges8262.GeographicArea" table="GEOGRAPHICAREA">
+        <id name="geographicAreaID" type="int">
+            <column name="CGEOGRAPHICAREAID" />
+            <generator class="native" />
+        </id>
+        <property name="code" type="int">
+            <column name="CODE" />
+        </property>
+         <property name="level" type="int">
+            <column name="LEVEL" />
+        </property>
+         <property name="name" type="java.lang.String">
+            <column name="NAME" />
+        </property>
+         <property name="alternativeCode" type="int" not-null="true">
+            <column name="ALTERNATIVECODE" />
+        </property>
+         <set name="ages" inverse="true">
+            <key column="GeographicArea"/>
+            <one-to-many class="fborges8262.Age"/>
+        </set>
+    </class>
+</hibernate-mapping>

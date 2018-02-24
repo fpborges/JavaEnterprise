@@ -1,5 +1,7 @@
 package fborges8262;
 
+
+
 public class Age {
 	
 	//constructor - makes Age class live
@@ -8,14 +10,15 @@ public class Age {
 	
 	//attributes - features of the class
     int ageID;
-	private int ageGroup;
-	private int censusYear;
-	private int geographicArea;
+	AgeGroup ageGroup;
+	CensusYear censusYear;
+	GeographicArea geographicArea;
 	private int combined;
 	private int male;
 	private int female;
 	
 	//generate getters and setters to manipulate data to the class
+	
 	
 	public int getAgeID() {
 		return ageID;
@@ -23,22 +26,22 @@ public class Age {
 	public void setAgeID(int ageID) {
 		this.ageID = ageID;
 	}
-	public int getAgeGroup() {
+	public AgeGroup getAgeGroup() {
 		return ageGroup;
 	}
-	public void setAgeGroup(int ageGroup) {
+	public void setAgeGroup(AgeGroup ageGroup) {
 		this.ageGroup = ageGroup;
 	}
-	public int getCensusYear() {
+	public CensusYear getCensusYear() {
 		return censusYear;
 	}
-	public void setCensusYear(int censusYear) {
+	public void setCensusYear(CensusYear censusYear) {
 		this.censusYear = censusYear;
 	}
-	public int getGeographicArea() {
+	public GeographicArea getGeographicArea() {
 		return geographicArea;
 	}
-	public void setGeographicArea(int geographicArea) {
+	public void setGeographicArea(GeographicArea geographicArea) {
 		this.geographicArea = geographicArea;
 	}
 	public int getCombined() {
@@ -59,10 +62,4 @@ public class Age {
 	public void setFemale(int female) {
 		this.female = female;
 	}
-
-	
-	
-	
-	
-
 }

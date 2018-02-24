@@ -1,5 +1,8 @@
 package fborges8262;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class GeographicArea {
 	
 	GeographicArea()
@@ -43,7 +46,36 @@ public class GeographicArea {
 		this.alternativeCode = alternativeCode;
 	}
 	
-	
+	private Set<Age> ages = new HashSet<Age>();
+
+    public Set<Age> getAges()
+    {
+
+        return ages;
+
+    }
+
+    public void setAges(Set<Age> ages)
+    {
+
+        this.ages = ages;
+
+    }
+
+    public void addAge(Age tempAge)
+    {
+
+        tempAge.setGeographicArea(this);
+        ages.add(tempAge);
+
+    }
+
+    public void removeAge(Age tempAge)
+    {
+
+        tempAge.setGeographicArea(new GeographicArea());
+        ages.remove(tempAge);
+    }
 	
 
 }
