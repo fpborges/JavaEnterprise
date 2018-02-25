@@ -1,14 +1,18 @@
 package fborges8262;
 
+//import javax.persistence.Entity;
+//import javax.persistence.Table;
 
-
+//@Entity
+//@Table(name="Age")
 public class Age {
 	
 	//constructor - makes Age class live
-	Age()
+	public Age()
 	{}
 	
 	//attributes - features of the class
+	
     int ageID;
 	AgeGroup ageGroup;
 	CensusYear censusYear;
@@ -62,4 +66,5 @@ public class Age {
 	public void setFemale(int female) {
 		this.female = female;
 	}
+
 }

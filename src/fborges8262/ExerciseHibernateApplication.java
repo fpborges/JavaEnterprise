@@ -1,8 +1,11 @@
 package fborges8262;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -15,6 +18,19 @@ public class ExerciseHibernateApplication {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
+		String myDatabase = "jdbc:derby://localhost:1527/CanadaCensusDB";
+		String username = "fborges8262";
+		String password = "paswword123";
+		
+		try {
+		Connection connectDerby = DriverManager.getConnection(myDatabase, username, password);	
+		System.out.println("connection successfully");
+		}
+		catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		
+		
 		Session tempSession = null;
         SessionFactory tempSessionFactory = null;
         Transaction tempTransaction = null;
@@ -44,10 +60,12 @@ public class ExerciseHibernateApplication {
           String tempHQLSelectString = "SELECT AGEGROUP.description, CENSUSYEAR.censusYear, GEOGRAPHICAREA.alternativeCode FROM AGEGROUP "
                   + "JOIN CENSUSYEAR "
                   + "JOIN GEOGRAPHICAREA "
-                  + "WHERE CENSUSYEAR.censusYear LIKE :censusYear";
+                  + "WHERE GEOGRAPHICAREA.alternativeCode LIKE :alternativeCode";
 
-            Query <Object[]> tempQuery = tempSession.createQuery(tempHQLSelectString)
-                    .setParameter("censusYear", "2016");
+            @SuppressWarnings("unchecked")
+			Query <Object[]> tempQuery = tempSession.createQuery(tempHQLSelectString).setParameter("alternativeCode","35");
+            
+                   // .setParameter("censusYear", "2016");
 
 // Setting maximum number of results may be useful in some cases for pagination
             tempQuery.setMaxResults(25);
@@ -63,8 +81,7 @@ public class ExerciseHibernateApplication {
 
             List <String> tempOutputTable = new ArrayList <String>();
 
-            tempOutputTable.add(String.format("%-20s", "Age")
-                    + String.format("%-15s", "AgeGroup")
+            tempOutputTable.add(String.format("%-15s", "AgeGroup")
                     + String.format("%-25s", "CensusYear")
                     + String.format("%-25s", "GeographicArea"));
 
@@ -76,20 +93,20 @@ public class ExerciseHibernateApplication {
 
                 Object[] tempResultSet = tempResultListIterator.next();
 
-                Age tempAge = (Age) tempResultSet[0];
-                AgeGroup tempAgeGroup = (AgeGroup) tempResultSet[1];
-                CensusYear tempCensusYear = (CensusYear) tempResultSet[2];
-                GeographicArea tempGeographicArea = (GeographicArea) tempResultSet[3];
+                AgeGroup tempAgeGroup = (AgeGroup) tempResultSet[0];
+                CensusYear tempCensusYear = (CensusYear) tempResultSet[1];
+                GeographicArea tempGeographicArea = (GeographicArea) tempResultSet[2];
 
                 if (tempIsFirstResultFlag)
                 {
 
-                    tempAge = tempAge.getAge();
+                    tempAgeGroup = tempAgeGroup.getAgeGroup();
                     tempIsFirstResultFlag = false;
 
                 }
 
-               /* String tempPosition = tempRoster.getPosition();
+                String tempPosition = tempRoster.getPosition();
+              
                 int tempJersey = tempRoster.getJersey();
                 String tempLastName = tempPlayer.getLastName();
                 String tempFirstName = tempPlayer.getFirstName();
@@ -102,7 +119,7 @@ public class ExerciseHibernateApplication {
             }
 
             PrintOutput("LeagueDB - " + tempTeamName, tempOutputTable);
-            System.out.println("Report done.");*/
+            System.out.println("Report done.");
 
 // If the transaction should be reverted or completed, use rollback() or commit(), respectively
             if (tempTransaction != null)
@@ -113,7 +130,8 @@ public class ExerciseHibernateApplication {
 
             }
 
-        }
+            }
+         
         catch(Exception e)
         {
 
@@ -167,8 +185,6 @@ public class ExerciseHibernateApplication {
 	}
 
 }
-
-
 
 
 
